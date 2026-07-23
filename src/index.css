@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-asphalt: #1B1B1A;
+  --color-steel: #3F4448;
+  --color-amber: #F2A900;
+  --color-amber-hover: #d99700;
+  --color-aggregate-tan: #C9A876;
+  --color-ticket-paper: #F3EFE7;
+  --color-ink: #211F1C;
+
+  --font-display: Oswald, sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ticket-paper text-ink font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display uppercase tracking-tight;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-8 py-3.5 font-display text-lg font-semibold uppercase transition-all duration-200 border-2 border-transparent;
+  }
+  .btn-primary {
+    @apply bg-amber text-asphalt hover:bg-amber-hover focus:outline-none focus-visible:ring-4 focus-visible:ring-asphalt focus-visible:ring-offset-2;
+  }
+  .btn-secondary {
+    @apply bg-transparent text-white border-white hover:bg-white hover:text-asphalt focus:outline-none focus-visible:ring-4 focus-visible:ring-white focus-visible:ring-offset-2;
+  }
+  .btn-dark {
+    @apply bg-asphalt text-white hover:bg-steel focus:outline-none focus-visible:ring-4 focus-visible:ring-asphalt focus-visible:ring-offset-2;
+  }
+
+  .form-control {
+    @apply w-full px-4 py-3 font-body text-base border border-gray-300 bg-ticket-paper rounded-none transition-colors focus:outline-none focus:ring-2 focus:ring-amber focus:bg-white focus:border-amber;
+  }
+}

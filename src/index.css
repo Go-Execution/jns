@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-asphalt: #1B1B1A;
-  --color-steel: #3F4448;
-  --color-amber: #F2A900;
-  --color-amber-hover: #d99700;
-  --color-aggregate-tan: #C9A876;
-  --color-ticket-paper: #F3EFE7;
-  --color-ink: #211F1C;
+  --color-background: #FFFFFF;
+  --color-foreground: #09090B;
+  --color-muted: #52525B;
+  --color-border: #E4E4E7;
+  --color-card: #F4F4F5;
+  --color-primary: #F2A900;
+  --color-primary-hover: #D99700;
+  --color-secondary: #F4F4F5;
+  --color-secondary-hover: #E4E4E7;
 
-  --font-display: Oswald, sans-serif;
-  --font-body: "IBM Plex Sans", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Inter', sans-serif;
 }
 
 @layer base {
@@ -19,28 +20,29 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-ticket-paper text-ink font-body antialiased;
+    @apply bg-background text-foreground font-sans antialiased;
   }
   h1, h2, h3, h4 {
-    @apply font-display uppercase tracking-tight;
+    @apply font-display tracking-tight font-semibold;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-8 py-3.5 font-display text-lg font-semibold uppercase transition-all duration-200 border-2 border-transparent;
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium transition-all duration-200 rounded-lg;
   }
   .btn-primary {
-    @apply bg-amber text-asphalt hover:bg-amber-hover focus:outline-none focus-visible:ring-4 focus-visible:ring-asphalt focus-visible:ring-offset-2;
+    @apply bg-primary text-black hover:bg-primary-hover shadow-[0_0_15px_rgba(242,169,0,0.3)] hover:shadow-[0_0_20px_rgba(242,169,0,0.5)];
   }
   .btn-secondary {
-    @apply bg-transparent text-white border-white hover:bg-white hover:text-asphalt focus:outline-none focus-visible:ring-4 focus-visible:ring-white focus-visible:ring-offset-2;
-  }
-  .btn-dark {
-    @apply bg-asphalt text-white hover:bg-steel focus:outline-none focus-visible:ring-4 focus-visible:ring-asphalt focus-visible:ring-offset-2;
+    @apply bg-secondary text-foreground hover:bg-secondary-hover border border-border;
   }
 
   .form-control {
-    @apply w-full px-4 py-3 font-body text-base border border-gray-300 bg-ticket-paper rounded-none transition-colors focus:outline-none focus:ring-2 focus:ring-amber focus:bg-white focus:border-amber;
+    @apply w-full px-4 py-3 text-sm border border-border bg-card rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-foreground placeholder:text-muted;
+  }
+
+  .glass-card {
+    @apply bg-white/80 border border-border shadow-xl backdrop-blur-xl rounded-2xl;
   }
 }

@@ -4,45 +4,69 @@
   --color-background: #FFFFFF;
   --color-foreground: #09090B;
   --color-muted: #52525B;
+  --color-muted-foreground: #52525B;
   --color-border: #E4E4E7;
   --color-card: #F4F4F5;
+  --color-surface: #F8F7F4;
   --color-primary: #F2A900;
   --color-primary-hover: #D99700;
+  --color-primary-foreground: #09090B;
   --color-secondary: #F4F4F5;
   --color-secondary-hover: #E4E4E7;
 
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Inter', sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
+  html.lenis,
+  html.lenis body {
+    height: auto;
   }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased overflow-x-clip;
   }
+
   h1, h2, h3, h4 {
     @apply font-display tracking-tight font-semibold;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium transition-all duration-200 rounded-lg;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold transition-colors duration-200 rounded-full;
   }
   .btn-primary {
-    @apply bg-primary text-black hover:bg-primary-hover shadow-[0_0_15px_rgba(242,169,0,0.3)] hover:shadow-[0_0_20px_rgba(242,169,0,0.5)];
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover shadow-[0_8px_24px_rgba(242,169,0,0.28)];
   }
   .btn-secondary {
     @apply bg-secondary text-foreground hover:bg-secondary-hover border border-border;
   }
 
   .form-control {
-    @apply w-full px-4 py-3 text-sm border border-border bg-card rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-foreground placeholder:text-muted;
+    @apply w-full px-4 py-3.5 text-sm border border-border bg-white rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-foreground placeholder:text-muted/70;
   }
 
   .glass-card {
-    @apply bg-white/80 border border-border shadow-xl backdrop-blur-xl rounded-2xl;
+    @apply bg-white/85 border border-border shadow-xl backdrop-blur-xl rounded-3xl;
   }
 }

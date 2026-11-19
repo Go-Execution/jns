@@ -199,7 +199,7 @@ function BouncyAccordionRow({
           ) : null}
           <span
             className={cn(
-              "min-w-0 flex-1 truncate text-[15px] font-medium text-foreground",
+              "min-w-0 flex-1 py-3.5 text-[15px] font-semibold leading-snug text-foreground",
               classNames?.title,
             )}
           >
